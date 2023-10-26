@@ -14,7 +14,7 @@
             $mensaje="ingrese sus datos";
             break;
     }
-?>
+    ?>
 
 <p><?php echo $mensaje; ?></p>
 
@@ -32,7 +32,6 @@
     echo form_close();
 ?>
 -->
-
 
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -62,6 +61,14 @@
       
       <!-- RTL Css -->
       <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/rtl.min.css">
+
+      <!-- Estilos CSS 
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      -->
+      <!-- Scripts de JavaScript -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       
       
   </head>
@@ -112,18 +119,23 @@
                            </a>
                            <h2 class="mb-2 text-center">Iniciar Sesión</h2>
                            <p class="text-center">Inicie sesión para mantenerse conectado.</p>
+
+                           <?php
+                            echo form_open_multipart('usuario/validarusuario');
+                           ?>
+
                            <form>
                               <div class="row">
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="email" class="form-label">Email</label>
-                                       <input type="email" class="form-control" id="email" aria-describedby="email" placeholder=" ">
+                                       <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="password" class="form-label">Password</label>
-                                       <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" ">
+                                       <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-12 d-flex justify-content-between">
@@ -135,8 +147,36 @@
                                  </div>
                               </div>
                               <div class="d-flex justify-content-center">
-                                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                                 <button id="btnIniciarSesion" type="submit" class="btn btn-primary">Iniciar Sesión</button>
                               </div>
+
+                              <!-- Agregar un botón para abrir el modal -->
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#errorModal" id="errorButton" style="display: none;">
+                                 Mostrar Error
+                              </button>
+
+                              <!-- Modal para mostrar el mensaje de error -->
+                              <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+                                 <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                       <div class="modal-header">
+                                          <h5 class="modal-title" id="errorModalLabel">Mensaje de Error</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                             <span aria-hidden="true">&times;</span>
+                                          </button>
+                                       </div>
+                                       <div class="modal-body">
+                                          <!-- Aquí se mostrará el mensaje de error -->
+                                          <p id="errorMessage">Error de ingreso</p>
+                                       </div>
+                                       <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <!--
                               <p class="text-center my-3">¿O iniciar sesión con otras cuentas?</p>
                               <div class="d-flex justify-content-center">
                                  <ul class="list-group list-group-horizontal list-group-flush">
@@ -153,10 +193,13 @@
                                        <a href="#"><img src="<?php echo base_url(); ?>/assets/images/brands/li.svg" alt="li"></a>
                                     </li>
                                  </ul>
-                              </div>
+                              </div> -->
                               <p class="mt-3 text-center">
                               ¿No tienes una cuenta? <a href="<?php echo base_url('index.php/usuario/register'); ?>" class="text-underline">Haga clic aquí para registrarte.</a>
                               </p>
+                              <?php
+                                 echo form_close();
+                              ?>
                            </form>
                         </div>
                      </div>
@@ -174,7 +217,7 @@
                </div>
             </div>
             <div class="col-md-6 d-md-block d-none bg-primary p-0 mt-n1 vh-100 overflow-hidden">
-               <img src="<?php echo base_url(); ?>/assets/images/auth/00.png" class="img-fluid gradient-main animated-scaleX" alt="images">
+               <img src="<?php echo base_url(); ?>/assets/images/auth/08.png" class="img-fluid gradient-main animated-scaleX" alt="images">
             </div>
          </div>
       </section>
@@ -209,7 +252,30 @@
     
     <!-- App Script -->
     <script src="<?php echo base_url(); ?>/assets/js/hope-ui.js" defer></script>
-    
-    
+
+    <!-- JavaScript para mostrar el modal con el mensaje de error -->
+      <script>
+      $(document).ready(function() {
+         // Aquí verificamos el valor de $msg y mostramos el modal si es necesario
+         switch ('<?php echo $msg; ?>') {
+            case '1':
+            $('#errorMessage').text('Error de ingreso');
+            $('#errorButton').click();
+            break;
+            case '2':
+            $('#errorMessage').text('Acceso no válido');
+            $('#errorButton').click();
+            break;
+            case '3':
+            $('#errorMessage').text('Gracias por usar el sistema');
+            $('#errorButton').click();
+            break;
+            default:
+            // No mostramos el modal por defecto
+            break;
+         }
+      });
+      </script>
+
   </body>
 </html>

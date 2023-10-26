@@ -1,7 +1,3 @@
-
-
-
-
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
@@ -83,42 +79,42 @@
                            </a>
                            <h2 class="mb-2 text-center">Registrarse</h2>
                            <p class="text-center">Crea tu cuenta de Hope UI.</p>
-                           <form>
+                           <form method="POST" action="<?php echo site_url('usuario/registrarusuario'); ?>">
                               <div class="row">
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label for="full-name" class="form-label">Nombre completo</label>
-                                       <input type="text" class="form-control" id="full-name" placeholder=" ">
+                                       <input type="text" class="form-control" id="name" name="name" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
-                                       <label for="last-name" class="form-label">Apellido</label>
-                                       <input type="text" class="form-control" id="last-name" placeholder=" ">
+                                       <label for="last-name" class="form-label">Primer Apellido</label>
+                                       <input type="text" class="form-control" id="firstName" name="firstName" placeholder=" ">
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <div class="form-group">
+                                       <label for="last-name" class="form-label">Segundo Apellido</label>
+                                       <input type="text" class="form-control" id="lastName" name="lastName" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label for="email" class="form-label">Email</label>
-                                       <input type="email" class="form-control" id="email" placeholder=" ">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                       <label for="phone" class="form-label">Teléfono No.</label>
-                                       <input type="text" class="form-control" id="phone" placeholder=" ">
+                                       <input type="email" class="form-control" id="email" name="email" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label for="password" class="form-label">Password</label>
-                                       <input type="password" class="form-control" id="password" placeholder=" ">
+                                       <input type="password" class="form-control" id="password" name="password" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
                                     <div class="form-group">
                                        <label for="confirm-password" class="form-label">Confirm Password</label>
-                                       <input type="text" class="form-control" id="confirm-password" placeholder=" ">
+                                       <input type="password" class="form-control" id="confirm-password" placeholder=" ">
                                     </div>
                                  </div> <!--
                                  <div class="col-lg-12 d-flex justify-content-center">
@@ -130,7 +126,27 @@
                               </div>
                               <div class="d-flex justify-content-center">
                                  <button type="submit" class="btn btn-primary">Registrarse</button>
-                              </div> <!--
+                              </div>
+                              
+                              <!-- Modal para mostrar mensajes -->
+                              <?php if ($this->session->flashdata('mensaje_exito') || $this->session->flashdata('mensaje_error')) : ?>
+                              <div class="modal" id="mensajeModal" tabindex="-1" role="dialog">
+                                 <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                          <div class="modal-body">
+                                             <!-- Mensaje de éxito o error -->
+                                             <?php if ($this->session->flashdata('mensaje_exito')) : ?>
+                                                <div class="alert alert-success"><?= $this->session->flashdata('mensaje_exito') ?></div>
+                                             <?php elseif ($this->session->flashdata('mensaje_error')) : ?>
+                                                <div class="alert alert-danger"><?= $this->session->flashdata('mensaje_error') ?></div>
+                                             <?php endif; ?>
+                                          </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <?php endif; ?>
+
+                              <!--
                               <p class="text-center my-3">¿O iniciar sesión con otras cuentas?</p>
                               <div class="d-flex justify-content-center">
                                  <ul class="list-group list-group-horizontal list-group-flush">
@@ -201,6 +217,18 @@
     <!-- App Script -->
     <script src="<?php echo base_url(); ?>/assets/js/hope-ui.js" defer></script>
     
+    <script>
+    $(document).ready(function() {
+        <?php if ($this->session->flashdata('mensaje_exito') || $this->session->flashdata('mensaje_error')) : ?>
+        $('#mensajeModal').modal('show');
+
+        // Cierra el modal después de 3000 milisegundos (3 segundos)
+        setTimeout(function() {
+            $('#mensajeModal').modal('hide');
+        }, 3000);
+        <?php endif; ?>
+    });
+    </script>
     
   </body>
 </html>

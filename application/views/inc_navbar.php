@@ -56,6 +56,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
+                <!-- 
                 <li class="me-0 me-xl-2">
                   <a class="btn btn-primary btn-sm d-flex gap-2 align-items-center" aria-current="page" href="http://hopeui.iqonic.design/pro?utm_source=hopeui-free-demo&utm_medium=hopeui-free-demo&utm_campaign=hopeui-pro-launch" target="_blank">
                     <svg class="icon-16" width="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +65,7 @@
                     </svg>
                     Go Pro
                   </a>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a href="#" class="search-toggle nav-link" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="<?php echo base_url(); ?>/assets/images/Flag/flag001.png" class="img-fluid rounded-circle" alt="user" style="height: 30px; min-width: 30px; width: 30px;">
@@ -238,16 +239,17 @@
                     <img src="<?php echo base_url(); ?>/assets/images/avatars/avtar_5.png" alt="User-Profile" class="theme-color-yellow-img img-fluid avatar avatar-50 avatar-rounded">
                     <img src="<?php echo base_url(); ?>/assets/images/avatars/avtar_3.png" alt="User-Profile" class="theme-color-pink-img img-fluid avatar avatar-50 avatar-rounded">
                     <div class="caption ms-3 d-none d-md-block ">
-                        <h6 class="mb-0 caption-title">Austin Robertson</h6>
-                        <p class="mb-0 caption-sub-title">Marketing Administrator</p>
+                        <h6 class="mb-0 caption-title"><?php echo $this->session->userdata('nombre'); ?> </h6>
+                        <h6 class="mb-0 caption-title"><?php echo $this->session->userdata('primerApellido') . ' ' . $this->session->userdata('segundoApellido'); ?> </h6>
+                        <!-- <p class="mb-0 caption-sub-title">Marketing Administrator</p> -->
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>/dashboard/app/user-profile.html">Profile</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>index.php/monitoreo/perfil">Perfil</a></li>
                     <li><a class="dropdown-item" href="<?php echo base_url(); ?>/dashboard/app/user-privacy-setting.html">Privacy Setting</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <!-- <li><a class="dropdown-item" href="<?php echo base_url(); ?>/dashboard/auth/sign-in.html">Logout</a></li> -->
-                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>index.php/usuario/logout">Logout</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>index.php/usuario/logout">Cerrar Sesión</a></li>
                   </ul>
                 </li>
               </ul>

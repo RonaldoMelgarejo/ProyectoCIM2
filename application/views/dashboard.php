@@ -14,6 +14,7 @@
                            </div>
                            <div class="progress-detail">
                               <p  class="mb-2">Total Sales</p>
+                              
                               <h4 class="counter">$560K</h4>
                            </div>
                         </div>
