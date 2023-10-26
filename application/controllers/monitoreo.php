@@ -61,6 +61,17 @@ class Monitoreo extends CI_Controller {
 		$this->load->view('inc_footer');
 	}
 
+	public function chart(){
+		//$lista=$this->monitoreo_model->lista();   //almacena en una variable $lista el metodo lista() que esta en estudiante_model
+		//$data['medicion']=$lista;		//$data es un array asociativo que puede almacenar muchos datos de muchas consultas como docente_model->lista2
+		
+		$this->load->view('inc_head');
+		$this->load->view('inc_sidebar');
+		$this->load->view('inc_navbar');
+		$this->load->view('chartjs');
+		$this->load->view('inc_footer');
+	}
+
 	/*
 	public function modificar(){
 		$idEstudiante=$_POST['idEstudiante'];   //en la variable $idEstudiante q creamos recibimos el parametro de del input=idEstudiante
