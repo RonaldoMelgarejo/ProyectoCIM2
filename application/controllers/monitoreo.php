@@ -61,10 +61,19 @@ class Monitoreo extends CI_Controller {
 		$this->load->view('inc_footer');
 	}
 
+	public function indexAJAX() {
+        // Recupera los datos de la tabla "potencia" desde el modelo
+        $data['potencia_data'] = $this->Monitoreo_model->getPotenciaData();
+
+        // Carga la vista que mostrará el gráfico
+        $this->load->view('monitoreo_view', $data);
+    }
+
 	public function chart(){
 		//$lista=$this->monitoreo_model->lista();   //almacena en una variable $lista el metodo lista() que esta en estudiante_model
 		//$data['medicion']=$lista;		//$data es un array asociativo que puede almacenar muchos datos de muchas consultas como docente_model->lista2
 		$data['potencia_data'] = $this->monitoreo_model->getPotenciaData();
+		echo json_encode($data); // Donde $datos es el arreglo con los datos que deseas enviar.
 
 		$this->load->view('inc_head');
 		$this->load->view('inc_sidebar');

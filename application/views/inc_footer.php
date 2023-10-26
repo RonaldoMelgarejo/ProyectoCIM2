@@ -24,6 +24,7 @@
       </footer>
       <!-- Footer Section End -->    
     </main>
+    
     <!-- Library Bundle Script -->
     <script src="<?php echo base_url(); ?>/assets/js/core/libs.min.js"></script>
     
