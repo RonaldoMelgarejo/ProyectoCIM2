@@ -21,4 +21,9 @@ class Monitoreo_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function insertarDispositivo($data){
+        $this->db->insert('dispositivo', $data);
+        return true;
+    }
 }

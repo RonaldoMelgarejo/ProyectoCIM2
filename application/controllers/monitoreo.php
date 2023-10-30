@@ -82,6 +82,53 @@ class Monitoreo extends CI_Controller {
 		$this->load->view('inc_footer');
 	}
 
+	public function dispositivo(){
+
+		$this->load->view('inc_head');
+		$this->load->view('inc_sidebar');
+		$this->load->view('inc_navbar');
+		$this->load->view('device');
+		$this->load->view('inc_footer');
+	}
+
+	public function registrardispositivo(){
+		// Recupera los datos del formulario
+		$codigo = $this->input->post('codigo');
+		$ubicacion = $this->input->post('ubicacion');
+		$latitud = $this->input->post('latitud');
+		$longitud = $this->input->post('longitud');
+
+		$estado = 1;
+		$usuariosid = 1;
+
+		$data = array(
+			'codigo' => $codigo,
+			'ubicacion' => $ubicacion,
+			'latitud' => $latitud,
+			'longitud' => $longitud,
+			'estado' => $estado,
+			'usuariosID' => $usuariosid,
+		);
+
+		// Llama al modelo para insertar los datos en ambas tablas
+		$this->load->model('monitoreo_model'); // Asegúrate de haber cargado el modelo
+		$resultado = $this->monitoreo_model->insertarDispositivo($data);
+
+		if ($resultado) {
+			// Éxito en la inserción, redirige a una página de éxito o muestra un mensaje
+			//echo 'Registro exitoso.';
+			//redirect('usuario/registro');
+			$this->session->set_flashdata('mensaje_exito', 'Registro exitoso.');
+		} else {
+			// Error en la inserción, muestra un mensaje de error
+			//echo 'Email existente.';
+			//redirect('usuario/error_registro');
+			$this->session->set_flashdata('mensaje_error', 'Email existente.');
+
+		}
+		redirect('monitoreo/dispositivo');
+	}
+
 	/*
 	public function modificar(){
 		$idEstudiante=$_POST['idEstudiante'];   //en la variable $idEstudiante q creamos recibimos el parametro de del input=idEstudiante

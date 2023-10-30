@@ -53,6 +53,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 -->
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+      <style>
+          /* Estilo para el mapa, ajusta el tamaño según tus necesidades */
+          #map {
+              height: 350px;
+              width: 100%; /* Ancho completo dentro de la columna */
+          }
+      </style>
+      
   </head>
   <body class=" ">
     <!-- loader Start -->

@@ -25,6 +25,8 @@
       <!-- Footer Section End -->    
     </main>
     
+    
+
     <!-- Library Bundle Script -->
     <script src="<?php echo base_url(); ?>/assets/js/core/libs.min.js"></script>
     
@@ -56,6 +58,93 @@
     <!-- App Script -->
     <script src="<?php echo base_url(); ?>/assets/js/hope-ui.js" defer></script>
     
-    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var map = L.map('map').setView([-17.393611, -66.156898], 15); // Coordenadas iniciales (Bangalore, India)
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            var marker; // Variable para el marcador
+
+            // Función para manejar clics en el mapa
+            function onMapClick(e) {
+                if (marker) {
+                    map.removeLayer(marker); // Elimina el marcador anterior
+                }
+                marker = L.marker(e.latlng).addTo(map);
+                marker.bindPopup("Ubicación seleccionada").openPopup();
+
+                // Actualiza los campos de entrada con las coordenadas
+                document.getElementById("latitud").value = e.latlng.lat.toFixed(6);
+                document.getElementById("longitud").value = e.latlng.lng.toFixed(6);
+
+                // Realiza geocodificación inversa para obtener la dirección
+                reverseGeocode(e.latlng);
+            }
+
+            // Agrega un evento de clic al mapa
+            map.on('click', onMapClick);
+
+            // Función para buscar una ubicación por nombre
+            document.getElementById("search-button").addEventListener("click", function () {
+                //var searchTerm = document.getElementById("search-input").value;
+                var searchTermElement = document.getElementById("search-input");
+                var searchTerm = searchTermElement.value;
+
+                console.log("UbicacionInsertada: " + searchTerm);
+                if (searchTerm) {
+                    // Realiza una búsqueda de geocodificación usando el servicio de OpenStreetMap (Nominatim)
+                    fetch("https://nominatim.openstreetmap.org/search?format=json&q=" + searchTerm)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data && data.length > 0) {
+                                var result = data[0];
+                                var lat = parseFloat(result.lat);
+                                var lon = parseFloat(result.lon);
+                                map.setView([lat, lon], 15);
+                                if (marker) {
+                                    map.removeLayer(marker);
+                                }
+                                marker = L.marker([lat, lon]).addTo(map);
+                                marker.bindPopup(searchTerm).openPopup();
+                                document.getElementById("latitud").value = lat.toFixed(6);
+                                document.getElementById("longitud").value = lon.toFixed(6);
+
+                                // Realiza geocodificación inversa para obtener la dirección
+                                reverseGeocode({lat: lat, lng: lon});
+                            } else {
+                                alert("Ubicación no encontrada.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            alert("Error al buscar la ubicación.");
+                        });
+                }
+            });
+
+            // Función para geocodificación inversa y actualización del campo de "Ubicación"
+            function reverseGeocode(latlng) {
+                fetch("https://nominatim.openstreetmap.org/reverse?format=json&lat=" + latlng.lat + "&lon=" + latlng.lng)
+                    .then(response => response.json())
+                    .then(data => {
+                        var address = data.display_name;
+                        document.getElementById("ubicacion").value = address;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        document.getElementById("ubicacion").value = "Dirección no disponible";
+                    });
+            }
+
+        });
+        
+    </script>
+
   </body>
 </html>

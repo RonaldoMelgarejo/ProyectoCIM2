@@ -262,9 +262,9 @@
                       <div class="col-md-12">
                           <div class="flex-wrap d-flex justify-content-between align-items-center">
                               <div>
-                                  <h1>Hello Devs!</h1>
-                                  <p>We are on a mission to help developers like you build successful projects for FREE.</p>
-                              </div>
+                                  <h1>Iluminando tu mundo, gestionando tu energía.</h1>
+                                  <!-- <p>We are on a mission to help developers like you build successful projects for FREE.</p> -->
+                              </div><!--
                               <div>
                                   <a href="" class="btn btn-link btn-soft-light">
                                       <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -273,7 +273,7 @@
                                       </svg>
                                       Announcements
                                   </a>
-                              </div>
+                              </div> -->
                           </div>
                       </div>
                   </div>

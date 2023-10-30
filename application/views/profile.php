@@ -14,7 +14,7 @@
                               <img src="../../assets/images/avatars/avtar_3.png" alt="User-Profile" class="theme-color-pink-img img-fluid rounded-pill avatar-100">
                            </div>
                            <div class="d-flex flex-wrap align-items-center mb-3 mb-sm-0">
-                              <h4 class="me-2 h4">Austin Robertson</h4>
+                              <h4 class="me-2 h4"> <?php echo $this->session->userdata('nombre') . ' '. $this->session->userdata('primerApellido') . ' ' . $this->session->userdata('segundoApellido'); ?></h4>
                               <span> - Web Developer</span>
                            </div>
                         </div>
@@ -25,12 +25,13 @@
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" data-bs-toggle="tab" href="#profile-activity" role="tab" aria-selected="false">Activity</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" data-bs-toggle="tab" href="#profile-friends" role="tab" aria-selected="false">Friends</a>
-                           </li> -->
+                           </li>-->
+                           
                            <li class="nav-item">
                               <a class="nav-link active show" data-bs-toggle="tab" href="#profile-profile" role="tab" aria-selected="false">Perfil</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#profile-device" role="tab" aria-selected="false">Dispositivos</a>
                            </li>
                         </ul>
                      </div>
@@ -187,7 +188,7 @@
             </div>
           </div>
             -->
-          <div class="col-lg-6">
+          <div class="col-lg-8">
              <div class="profile-content tab-content">
                 <!--
                <div id="profile-feed" class="tab-pane fade">
@@ -599,7 +600,7 @@
                   <div class="card">
                      <div class="card-header">
                         <div class="header-title">
-                           <h4 class="card-title">Profile</h4>
+                           <h4 class="card-title">Perfil</h4>
                         </div>
                      </div>
                      <div class="card-body">
@@ -608,43 +609,147 @@
                               <img src="../../assets/images/avatars/01.png" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
                            </div>
                            <div class="mt-3">
+                              <!--
                               <h3 class="d-inline-block">Austin Robertson</h3>
                               <p class="d-inline-block pl-3"> - Web developer</p>
                               <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                              -->
+                              <form id="editarUsuario" action="">
+                                 <div class="row">
+                                    <div class="col-lg-6">
+                                       <div class="form-group">
+                                          <label for="full-name" class="form-label">Nombre</label>
+                                          <input type="text" class="form-control" id="name" name="name" value="<?php echo $this->session->userdata('nombre');?>" readonly>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <div class="form-group">
+                                          <label for="last-name" class="form-label">Primer Apellido</label>
+                                          <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo $this->session->userdata('primerApellido');?>" readonly>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <div class="form-group">
+                                          <label for="last-name" class="form-label">Segundo Apellido</label>
+                                          <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo $this->session->userdata('segundoApellido');?>" readonly>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                       <div class="form-group">
+                                          <label for="email" class="form-label">Email</label>
+                                          <input type="email" class="form-control" id="email" name="email" value="<?php echo $this->session->userdata('email');?>" readonly>
+                                       </div>
+                                    </div>
+                                    
+                                 </div>
+                                 <div class="d-flex justify-content-center">
+                                    <!-- <button type="submit" class="btn btn-primary">Editar</button> -->
+                                    <button type="button" id="editar" class="btn btn-primary">Editar</button>
+                                    <button type="button" id="guardar" class="btn btn-primary" style="display: none;">Guardar</button>
+                                 </div>
+                              </form>
                            </div>
                         </div>
                      </div>
                   </div>
                   
                </div>
+               <div id="profile-device" class="tab-pane fade">
+                  <div class="card">
+                     <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                           <h4 class="card-title">Dispositivos</h4>
+                        </div>
+                     </div>
+                     <div class="card-body p-0">
+                        <div class="table-responsive mt-4">
+                           <table id="basic-table" class="table table-striped mb-0" role="grid">
+                              <thead>
+                                 <tr>
+                                    <th>Nro</th>
+                                    <th>Código</th>
+                                    <th>Ubicacion</th>
+                                    <th>Estado</th>
+                                    <th>Fecha Instalacion</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <div class="d-flex align-items-center">
+                                          <img class="rounded img-fluid avatar-40 me-3 bg-soft-primary"
+                                             src="../../assets/images/shapes/01.png" alt="profile">
+                                          <h6>Soft UI XD Version</h6>
+                                       </div>
+                                    </td>
+                                    <td>
+                                       <div class="iq-media-group iq-media-group-1">
+                                             <a href="#" class="iq-media-1">
+                                                <div class="icon iq-icon-box-3 rounded-pill">SP</div>
+                                             </a>
+                                             <a href="#" class="iq-media-1">
+                                                <div class="icon iq-icon-box-3 rounded-pill">PP</div>
+                                             </a>
+                                             <a href="#" class="iq-media-1">
+                                                <div class="icon iq-icon-box-3 rounded-pill">MM</div>
+                                             </a>
+                                          </div>
+                                    </td>
+                                    <td>$14000</td>
+                                    <td><div class="text-info">Pending</div></td>
+                                    <td>
+                                       <div class="d-flex align-items-center mb-2">
+                                          <h6>60%</h6>
+                                       </div>
+                                       <div class="progress bg-soft-info shadow-none w-100" style="height: 6px">
+                                          <div class="progress-bar bg-info" data-toggle="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
         
           </div> 
           
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <div class="profile-content tab-content">
                 <div id="profile-profile" class="tab-pane fade active show">
                     <div class="card">
                         <div class="card-header">
                             <div class="header-title">
-                            <h4 class="card-title">About User</h4>
+                            <h4 class="card-title">Acerca del usuario</h4>
                             </div>
                         </div>
                         <div class="card-body">
+                           <!-- 
                             <div class="user-bio">
                             <p>Tart I love sugar plum I love oat cake. Sweet roll caramels I love jujubes. Topping cake wafer.</p>
-                            </div>
+                            </div> -->
                             <div class="mt-2">
-                            <h6 class="mb-1">Joined:</h6>
-                            <p>Feb 15, 2021</p>
+                            <h6 class="mb-1">Unido:</h6>
+                            <!-- <p><?php echo $this->session->userdata('fechaRegistro');?></p> -->
+                            <p><?php
+                                 $fechaRegistro = $this->session->userdata('fechaRegistro');
+                                 if (!empty($fechaRegistro)) {
+                                    echo date("d-m-Y", strtotime($fechaRegistro));
+                                 }
+                                 ?>
+                            </p>
                             </div>
+                            
                             <div class="mt-2">
                             <h6 class="mb-1">Lives:</h6>
                             <p>United States of America</p>
                             </div>
+                              
                             <div class="mt-2">
                             <h6 class="mb-1">Email:</h6>
-                            <p><a href="#" class="text-body"> austin@gmail.com</a></p>
+                            <p><a href="#" class="text-body"> <?php echo $this->session->userdata('email');?> </a></p>
                             </div>
                             <div class="mt-2">
                             <h6 class="mb-1">Url:</h6>
@@ -855,3 +960,37 @@
              </div>
           </div> -->
       </div>
+</div>
+
+    <script>
+        const form = document.getElementById('editarUsuario');
+        const nombreInput = document.getElementById('name');
+        const papellidoInput = document.getElementById('firstName');
+        const sapellidoInput = document.getElementById('lastName');
+        const emailInput = document.getElementById('email');
+        //const nombreLabel = document.getElementById('nombreLabel');
+        //const apellidoLabel = document.getElementById('apellidoLabel');
+        const editarButton = document.getElementById('editar');
+        const guardarButton = document.getElementById('guardar');
+
+        editarButton.addEventListener('click', function() {
+            nombreInput.removeAttribute('readonly');
+            papellidoInput.removeAttribute('readonly');
+            sapellidoInput.removeAttribute('readonly');
+            emailInput.removeAttribute('readonly');
+            editarButton.style.display = 'none';
+            guardarButton.style.display = 'block';
+        });
+
+        guardarButton.addEventListener('click', function() {
+            // Actualizar los labels con los valores de los campos de entrada
+            //nombreLabel.innerText = nombreInput.value;
+            //apellidoLabel.innerText = apellidoInput.value;
+
+            // Restaurar los campos de entrada a solo lectura
+            nombreInput.setAttribute('readonly', 'readonly');
+            apellidoInput.setAttribute('readonly', 'readonly');
+            editarButton.style.display = 'block';
+            guardarButton.style.display = 'none';
+        });
+    </script>
