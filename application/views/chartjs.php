@@ -53,10 +53,10 @@
 
         function fetchData() {
             $.ajax({
-                url: '<?php echo base_url('monitoreo'); ?>', // Reemplaza con la URL de tu vista
+                //url: '<?= base_url('monitoreo/obtenerDatosGrafico') ?>', // Reemplaza 'controlador' con el nombre de tu controlador
+                url: <?php echo json_encode(base_url('monitoreo/obtenerDatosGrafico')); ?>,
                 method: 'GET',
                 dataType: 'json',
-                
                 success: function(data) {
                     // Actualiza el gráfico con los nuevos datos
                     chart.data.labels = data.labels;
@@ -72,4 +72,5 @@
 
         // Actualiza los datos cada 5 segundos (5000 ms)
         setInterval(fetchData, 5000);
+
     </script>

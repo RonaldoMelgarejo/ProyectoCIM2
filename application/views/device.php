@@ -144,7 +144,7 @@
                                     </div>
                                     <!-- Columna derecha para el mapa y búsqueda -->
                                     <div class="col-lg-8">
-                                        <div class="form-group d-flex justify-content-center align-items-center"> <!-- Agregar estas clases para centrar vertical y horizontalmente -->
+                                        <div class="mb-2 d-flex justify-content-center align-items-center"> <!-- Agregar estas clases para centrar vertical y horizontalmente -->
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <input type="text" class="form-control" id="search-input" placeholder="Buscar país, ciudad o lugar">

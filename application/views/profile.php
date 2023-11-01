@@ -188,7 +188,7 @@
             </div>
           </div>
             -->
-          <div class="col-lg-8">
+          <div class="col-lg-12">
              <div class="profile-content tab-content">
                 <!--
                <div id="profile-feed" class="tab-pane fade">
@@ -614,8 +614,11 @@
                               <p class="d-inline-block pl-3"> - Web developer</p>
                               <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                               -->
-                              <form id="editarUsuario" action="">
+                              <form method="post" id="editarUsuario" action="<?php echo site_url('usuario/modificarusuario'); ?>">
                                  <div class="row">
+                                    <input type="hidden" id="idUsuario" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                                    <!-- <?php echo 'Valor de idUsuario: ' . $this->session->userdata('idusuario'); ?> -->
+
                                     <div class="col-lg-6">
                                        <div class="form-group">
                                           <label for="full-name" class="form-label">Nombre</label>
@@ -645,7 +648,9 @@
                                  <div class="d-flex justify-content-center">
                                     <!-- <button type="submit" class="btn btn-primary">Editar</button> -->
                                     <button type="button" id="editar" class="btn btn-primary">Editar</button>
-                                    <button type="button" id="guardar" class="btn btn-primary" style="display: none;">Guardar</button>
+                                    <button type="submit" id="guardar" class="btn btn-primary" style="display: none;">Guardar</button>
+                                    <div style="width: 20px;"></div>
+                                    <button type="button" id="cancelar" class="btn btn-primary" style="display: none;">Cancelar</button>
                                  </div>
                               </form>
                            </div>
@@ -669,11 +674,16 @@
                                     <th>Nro</th>
                                     <th>Código</th>
                                     <th>Ubicacion</th>
-                                    <th>Estado</th>
+                                    <th>Latitud</th>
+                                    <th>Longitud</th>
                                     <th>Fecha Instalacion</th>
+                                    <th>Estado</th>
+                                    <th></th>
+                                    <th></th>
                                  </tr>
                               </thead>
                               <tbody>
+                                 <!--
                                  <tr>
                                     <td>
                                        <div class="d-flex align-items-center">
@@ -705,7 +715,64 @@
                                           <div class="progress-bar bg-info" data-toggle="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                        </div>
                                     </td>
-                                 </tr>
+                                 </tr> -->
+
+                                 <?php
+                                    $indice=1; //le damos valor al indice para no mostrar el id
+
+                                    foreach($dispositivo->result() as $row){  //$estudiante se rescata del controlador estudiante con el mismo nombre que esta en el array asociativo $row solo es una variable que almacena datos 
+                                    ?>
+
+                                    <tr>
+                                       <th scope="row"><?php echo $indice; ?></th>
+                                       <td><?php echo $row->codigo; ?></td>   <!--nombre es el parametro de BD y debe ser escrito como en la BD y $row es el dato almacenado momentaneamente-->
+                                       <td><?php echo $row->ubicacion; ?></td>
+                                       <td><?php echo $row->latitud; ?></td>
+                                       <td><?php echo $row->longitud; ?></td>
+                                       <td><?php echo formatearFecha($row->fechaInstalacion); ?></td>
+
+                                       <td>
+                                          <?php
+                                                echo form_open_multipart('monitoreo/deshabilitarbd');
+                                          ?>
+                                                <input type="hidden" name="idSensordht11" value="<?php echo $row->id; ?>">
+                                                <button type="submit" class="btn btn-warning">Deshabilitar</button>
+                                          <?php
+                                          echo form_close();
+                                          ?>
+                                       </td>
+
+                                       <td> 
+                                          <!--
+                                          <?php
+                                             echo form_open_multipart('estudiante/modificar');
+                                          ?> -->
+                                          <!-- <input type="hidden" name="idEstudiante" value="<?php echo $row->idEstudiante; ?>"> -->
+                                          <button type="submit" class="btn btn-primary btn-xs">Modificar</button>
+                                          <!-- 
+                                          <?php
+                                             echo form_close();
+                                          ?>
+                                          -->
+                                       </td>
+
+                                       <td>
+                                          <?php
+                                             echo form_open_multipart('monitoreo/eliminarbd');
+                                          ?>
+                                          <input type="hidden" name="idSensordht11" value="<?php echo $row->id; ?>">
+                                          <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                                          <?php
+                                             echo form_close();
+                                          ?>
+                                       </td>
+
+                                    </tr>
+
+                                    <?php
+                                    $indice++;
+                                    }
+                                 ?> 
                               </tbody>
                            </table>
                         </div>
@@ -715,7 +782,7 @@
             </div>
         
           </div> 
-          
+          <!--
           <div class="col-lg-4">
             <div class="profile-content tab-content">
                 <div id="profile-profile" class="tab-pane fade active show">
@@ -726,13 +793,13 @@
                             </div>
                         </div>
                         <div class="card-body">
-                           <!-- 
+                            
                             <div class="user-bio">
                             <p>Tart I love sugar plum I love oat cake. Sweet roll caramels I love jujubes. Topping cake wafer.</p>
-                            </div> -->
+                            </div> 
                             <div class="mt-2">
                             <h6 class="mb-1">Unido:</h6>
-                            <!-- <p><?php echo $this->session->userdata('fechaRegistro');?></p> -->
+                             <p><?php echo $this->session->userdata('fechaRegistro');?></p> 
                             <p><?php
                                  $fechaRegistro = $this->session->userdata('fechaRegistro');
                                  if (!empty($fechaRegistro)) {
@@ -764,6 +831,7 @@
                 </div>
             </div>
           </div>
+         -->
           <!--
           <div class="col-lg-3">
              <div class="card">
@@ -962,35 +1030,73 @@
       </div>
 </div>
 
-    <script>
-        const form = document.getElementById('editarUsuario');
-        const nombreInput = document.getElementById('name');
-        const papellidoInput = document.getElementById('firstName');
-        const sapellidoInput = document.getElementById('lastName');
-        const emailInput = document.getElementById('email');
-        //const nombreLabel = document.getElementById('nombreLabel');
-        //const apellidoLabel = document.getElementById('apellidoLabel');
-        const editarButton = document.getElementById('editar');
-        const guardarButton = document.getElementById('guardar');
+<script>
+    const nombreInput = document.getElementById('name');
+    const apellidoInput = document.getElementById('firstName');
+    const segundoApellidoInput = document.getElementById('lastName');
+    const emailInput = document.getElementById('email');
+    const editarButton = document.getElementById('editar');
+    const guardarButton = document.getElementById('guardar');
+    const cancelarButton = document.getElementById('cancelar');
+    const nombreOriginal = '<?php echo $this->session->userdata("nombre"); ?>';
+    const apellidoOriginal = '<?php echo $this->session->userdata("primerApellido"); ?>';
+    const segundoApellidoOriginal = '<?php echo $this->session->userdata("segundoApellido"); ?>';
+    const emailOriginal = '<?php echo $this->session->userdata("email"); ?>';
 
-        editarButton.addEventListener('click', function() {
-            nombreInput.removeAttribute('readonly');
-            papellidoInput.removeAttribute('readonly');
-            sapellidoInput.removeAttribute('readonly');
-            emailInput.removeAttribute('readonly');
-            editarButton.style.display = 'none';
-            guardarButton.style.display = 'block';
-        });
+    
+    editarButton.addEventListener('click', function() {
+      nombreInput.removeAttribute('readonly');
+      apellidoInput.removeAttribute('readonly');
+      segundoApellidoInput.removeAttribute('readonly');
+      emailInput.removeAttribute('readonly');
+      editarButton.style.display = 'none';
+      guardarButton.style.display = 'block';
+      cancelarButton.style.display = 'block';
 
-        guardarButton.addEventListener('click', function() {
-            // Actualizar los labels con los valores de los campos de entrada
-            //nombreLabel.innerText = nombreInput.value;
-            //apellidoLabel.innerText = apellidoInput.value;
+      // Agregar una instrucción console.log para verificar el valor de idUsuario
+      const id = '<?php echo $this->session->userdata('idusuario'); ?>';
+      console.log("Id de Usuario: " + id);
+   });
 
-            // Restaurar los campos de entrada a solo lectura
-            nombreInput.setAttribute('readonly', 'readonly');
-            apellidoInput.setAttribute('readonly', 'readonly');
-            editarButton.style.display = 'block';
-            guardarButton.style.display = 'none';
-        });
-    </script>
+
+    guardarButton.addEventListener('click', function() {
+      // Agregar una instrucción console.log para verificar que el evento se ejecute
+      console.log("Botón Guardar presionado");
+
+      // Aquí puedes agregar la lógica para guardar los cambios en tu base de datos.
+      // Después de guardar, puedes actualizar los valores originales si es necesario.
+      /*
+      const nuevoNombre = nombreInput.value;
+      const nuevoApellido = apellidoInput.value;
+      const nuevoSegundoApellido = segundoApellidoInput.value;
+      const nuevoEmail = emailInput.value;
+      */
+      // Restaurar los campos a solo lectura y ocultar los botones
+      nombreInput.setAttribute('readonly', 'readonly');
+      apellidoInput.setAttribute('readonly', 'readonly');
+      segundoApellidoInput.setAttribute('readonly', 'readonly');
+      emailInput.setAttribute('readonly', 'readonly');
+      editarButton.style.display = 'block';
+      guardarButton.style.display = 'none';
+      cancelarButton.style.display = 'none';
+
+      // Verificar si se envía el formulario
+      console.log("Enviando formulario...");
+   });
+
+
+    cancelarButton.addEventListener('click', function() {
+        // Restaurar los campos de entrada a sus valores originales
+        nombreInput.value = nombreOriginal;
+        apellidoInput.value = apellidoOriginal;
+        segundoApellidoInput.value = segundoApellidoOriginal;
+        emailInput.value = emailOriginal;
+        nombreInput.setAttribute('readonly', 'readonly');
+        apellidoInput.setAttribute('readonly', 'readonly');
+        segundoApellidoInput.setAttribute('readonly', 'readonly');
+        emailInput.setAttribute('readonly', 'readonly');
+        editarButton.style.display = 'block';
+        guardarButton.style.display = 'none';
+        cancelarButton.style.display = 'none';
+    });
+</script>

@@ -38,4 +38,21 @@ class Usuario_model extends CI_Model {
 			return true;
 		}
     }
+
+	public function modificarUsuarioBD($id,$data){
+		/*
+		echo 'Modelo: La función modificarUsuarioBD se ha llamado correctamente.<br>'; // Imprime un mensaje
+		echo 'ID del usuario: ' . $id . '<br>'; // Imprime el ID del usuario
+
+		echo 'Datos del formulario:<pre>';
+		print_r($data); // Imprime los datos del formulario
+    	echo '</pre>';
+		*/
+		
+		$data['fechaModificacion'] = date('Y-m-d H:i:s'); // Establece la fecha y hora de modificación actual
+
+		$this->db->where('id',$id);
+		$this->db->update('usuarios',$data);  // update('nombreTablaBD','datos')
+	}
+
 }

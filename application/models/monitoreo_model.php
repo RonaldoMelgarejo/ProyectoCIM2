@@ -6,8 +6,7 @@ class Monitoreo_model extends CI_Model {
 
 	//no olvidar ir a cargar en autoload.php linea 135 en autoload Model 'estudiante_model' que es estudiante_model.php q sera usado en todo el proyecto
 	//empieza con metodo que devolvera lista
-	public function lista()
-	{
+	public function lista(){
 		$this->db->select('*');
 		$this->db->from('potencia');
 		return $this->db->get();  //manda los datos a un controlador y se lo llamara desde estudiante.php
@@ -26,4 +25,10 @@ class Monitoreo_model extends CI_Model {
         $this->db->insert('dispositivo', $data);
         return true;
     }
+
+    public function listaDispositivos(){
+		$this->db->select('*');
+		$this->db->from('dispositivo');
+		return $this->db->get();  //manda los datos a un controlador y se lo llamara desde estudiante.php
+	}
 }

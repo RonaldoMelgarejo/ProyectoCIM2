@@ -145,8 +145,46 @@ class Usuario extends CI_Controller {
 		redirect('usuario/register');
 	}
 
-	public function generarUsuario(){
+	/* OPCIONAL
+	public function modificarusuario() {
+		//echo 'Controlador: La función modificarusuario se ha llamado correctamente.<br>'; // Imprime un mensaje
+		$id = $this->input->post('idUsuario'); // Cambia 'idusuario' a 'idUsuario' para que coincida con el nombre del campo del formulario
+	    //echo 'ID del usuario: ' . $id . '<br>'; // Imprime el ID del usuario
+
+		$data['nombre'] = $this->input->post('name');
+		$data['primerApellido'] = $this->input->post('firstName');
+		$data['segundoApellido'] = $this->input->post('lastName');
+		$data['email'] = $this->input->post('email');
+	
 		
+		echo 'Datos del formulario:<pre>';
+		print_r($data); // Imprime los datos del formulario
+		echo '</pre>';
+		
+
+		$this->usuario_model->modificarUsuarioBD($id, $data);
+	
+		redirect('monitoreo/perfil', 'refresh');
+	}
+	*/
+
+	public function modificarusuario() {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$id = $this->input->post('idUsuario');
+			$data['nombre'] = $this->input->post('name');
+			$data['primerApellido'] = $this->input->post('firstName');
+			$data['segundoApellido'] = $this->input->post('lastName');
+			$data['email'] = $this->input->post('email');
+			$this->usuario_model->modificarUsuarioBD($id, $data);
+	
+			// Actualiza los valores en la sesión
+			$this->session->set_userdata('nombre', $data['nombre']);
+			$this->session->set_userdata('primerApellido', $data['primerApellido']);
+			$this->session->set_userdata('segundoApellido', $data['segundoApellido']);
+			$this->session->set_userdata('email', $data['email']);
+		}
+	
+		redirect('monitoreo/perfil', 'refresh');
 	}
 	
 }
