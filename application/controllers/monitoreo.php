@@ -5,6 +5,7 @@ class Monitoreo extends CI_Controller {
 
 
 	//empieza con metodo
+	//---------- funciones del template -------
 	public function index()
 	{
         /*
@@ -16,7 +17,7 @@ class Monitoreo extends CI_Controller {
 		//$this->load->view('est_lista'$data); //cargar vista est_lista y se envia $data que debe ser dado el formato en la vista
         $this->load->view('inc_sidebar');
         $this->load->view('inc_navbar');
-		$this->load->view('dashboard');
+		$this->load->view('dashboardtemplate');
 		$this->load->view('inc_footer'); //cargar pie
 	}
 
@@ -34,11 +35,23 @@ class Monitoreo extends CI_Controller {
 		$this->load->view('prueba');
 		$this->load->view('inc_footer'); //cargar pie
 	}
+	//-----------------------------------------
 
+	//--------- Vista Dashboard --------
+	public function dashboard(){
+		$this->load->view('inc_head');
+		$this->load->view('inc_sidebar');
+        $this->load->view('inc_navbar');
+		$this->load->view('dashboard');
+		$this->load->view('inc_footer');
+	}
+	//----------------------------------
+
+	//--------- Vista de perfil y de editar usuario ---------
 	public function perfil()
 	{
         
-		$lista=$this->monitoreo_model->listaDispositivos();   //almacena en una variable $lista el metodo lista() que esta en estudiante_model
+		$lista=$this->dispositivo_model->listaDispositivos();   //almacena en una variable $lista el metodo lista() que esta en estudiante_model
 		$data['dispositivo']=$lista;		//$data es un array asociativo que puede almacenar muchos datos de muchas consultas como docente_model->lista2
 		
 
@@ -49,7 +62,9 @@ class Monitoreo extends CI_Controller {
 		$this->load->view('profile', $data);
 		$this->load->view('inc_footer'); //cargar pie
 	}
+	//-------------------------------------------------------
 
+	//--------- Vista Tabla --------
 	public function table(){
 		$lista=$this->monitoreo_model->lista();   //almacena en una variable $lista el metodo lista() que esta en estudiante_model
 		$data['medicion']=$lista;		//$data es un array asociativo que puede almacenar muchos datos de muchas consultas como docente_model->lista2
@@ -60,109 +75,48 @@ class Monitoreo extends CI_Controller {
 		$this->load->view('datatable', $data);
 		$this->load->view('inc_footer');
 	}
+	//------------------------------
 
-	public function indexAJAX() {
-        // Recupera los datos de la tabla "potencia" desde el modelo
-        $data['potencia_data'] = $this->Monitoreo_model->getPotenciaData();
+	//--------- Funciona de graficar AJAX ------
+	public function graficaAjax(){
+		$this->load->view('inc_head');
+		$this->load->view('inc_sidebar');
+		$this->load->view('inc_navbar');
+		$this->load->view('chart');
+		$this->load->view('inc_footer');
+	}
 
-        // Carga la vista que mostrará el gráfico
-        $this->load->view('monitoreo_view', $data);
+	public function grafica() {
+        $this->load->model('Monitoreo_model');
+
+        $data['voltaje'] = $this->Monitoreo_model->getVoltajeData();
+        $data['corriente'] = $this->Monitoreo_model->getCorrienteData();
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
+	//------------------------------------------
 
-	public function chart(){
-		$data['potencia_data'] = $this->monitoreo_model->getPotenciaData();
-		echo json_encode($data); // Donde $datos es el arreglo con los datos que deseas enviar.
-
+	//--------- Vista de registrar y lista de Dispositivo -----
+	public function registrarDispositivo(){
 		$this->load->view('inc_head');
 		$this->load->view('inc_sidebar');
 		$this->load->view('inc_navbar');
-		$this->load->view('chartjs',$data);
+		$this->load->view('device_register');
 		$this->load->view('inc_footer');
 	}
 
-	public function obtenerDatosGrafico() {
-		// Aquí obtienes los datos para el gráfico (similar a la función 'chart' en tu controlador original)
-		$data['potencia_data'] = $this->monitoreo_model->getPotenciaData();
-	
-		// Formatea los datos como JSON y devuelve la respuesta
-		header('Content-Type: application/json');
-		echo json_encode([
-			'labels' => array_column($data['potencia_data'], 'fechaHoraMedicion'),
-			'voltaje' => array_column($data['potencia_data'], 'voltaje'),
-			'corriente' => array_column($data['potencia_data'], 'corriente')
-		]);
-	}
-
-	public function dispositivo(){
-
-		$this->load->view('inc_head');
-		$this->load->view('inc_sidebar');
-		$this->load->view('inc_navbar');
-		$this->load->view('device');
-		$this->load->view('inc_footer');
-	}
-
-	//Opcion a crear controlador y modelo para dispositivos 
-	public function registrardispositivo(){
-		// Recupera los datos del formulario
-		$codigo = $this->input->post('codigo');
-		$ubicacion = $this->input->post('ubicacion');
-		$latitud = $this->input->post('latitud');
-		$longitud = $this->input->post('longitud');
-
-		$estado = 1;
-		$usuariosid = 1;
-
-		$data = array(
-			'codigo' => $codigo,
-			'ubicacion' => $ubicacion,
-			'latitud' => $latitud,
-			'longitud' => $longitud,
-			'estado' => $estado,
-			'usuariosID' => $usuariosid,
-		);
-
-		// Llama al modelo para insertar los datos en ambas tablas
-		$this->load->model('monitoreo_model'); // Asegúrate de haber cargado el modelo
-		$resultado = $this->monitoreo_model->insertarDispositivo($data);
-
-		if ($resultado) {
-			// Éxito en la inserción, redirige a una página de éxito o muestra un mensaje
-			//echo 'Registro exitoso.';
-			//redirect('usuario/registro');
-			$this->session->set_flashdata('mensaje_exito', 'Registro exitoso.');
-		} else {
-			// Error en la inserción, muestra un mensaje de error
-			//echo 'Email existente.';
-			//redirect('usuario/error_registro');
-			$this->session->set_flashdata('mensaje_error', 'Email existente.');
-
-		}
-		redirect('monitoreo/dispositivo');
-	}
-
-	public function deshabilitar(){
-
-	}
-
-	public function modificarbd(){
-		$idEstudiante=$_POST['idEstudiante'];
-		$data['nombre']=$_POST['nombre'];   //'nombre' como esta escrito en BD y el post 'nombre' como esta escrito en input del formulario 
-		$data['primerApellido']=$_POST['primerApellido'];
-		$data['segundoApellido']=$_POST['segundoApellido'];
-		$data['nota']=$_POST['nota'];
-
-		$this-> estudiante_model->modificarEstudiante($idEstudiante,$data);  //envia a model.php los datos para hacer update
+	public function dispositivos(){
+		$lista=$this->dispositivo_model->listaDispositivos();   //almacena en una variable $lista el metodo lista() que esta en estudiante_model
+		$data['dispositivo']=$lista;		//$data es un array asociativo que puede almacenar muchos datos de muchas consultas como docente_model->lista2
 		
-		redirect('estudiante/index','refresh');
-	}
-	
-	public function eliminarbd(){
-		$idEstudiante=$_POST['idEstudiante'];
-		$this->estudiante_model->eliminarEstudiante($idEstudiante); //enviamos al delete esos datos
-
-		redirect('estudiante/index','refresh');
-	}
+		$this->load->view('inc_head');
+		$this->load->view('inc_sidebar');
+		$this->load->view('inc_navbar');
+		$this->load->view('device_list', $data);
+		$this->load->view('inc_footer');
+	}	
+	//---------------------------------------------------------
 
 	/*
 	public function modificar(){

@@ -678,8 +678,9 @@
                                     <th>Longitud</th>
                                     <th>Fecha Instalacion</th>
                                     <th>Estado</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Habilitar / Deshabilitar</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -730,15 +731,35 @@
                                        <td><?php echo $row->latitud; ?></td>
                                        <td><?php echo $row->longitud; ?></td>
                                        <td><?php echo formatearFecha($row->fechaInstalacion); ?></td>
-
+                                       <td>
+                                             <?php if ($row->estado == 1): ?>
+                                                Activo
+                                             <?php else: ?>
+                                                Desactivado
+                                             <?php endif; ?>
+                                       </td>
+                                       <!--
                                        <td>
                                           <?php
-                                                echo form_open_multipart('monitoreo/deshabilitarbd');
+                                                echo form_open_multipart('monitoreo/habilitarbd');
                                           ?>
-                                                <input type="hidden" name="idSensordht11" value="<?php echo $row->id; ?>">
-                                                <button type="submit" class="btn btn-warning">Deshabilitar</button>
+                                                <input type="hidden" name="idDispositivo" value="<?php echo $row->id; ?>">
+                                                <button type="submit" class="btn btn-warning" onclick="cambiarEstado(this)">Activar</button>
                                           <?php
                                           echo form_close();
+                                          ?>
+                                       </td>
+                                       -->
+                                       <td>
+                                          <?php
+                                             echo form_open_multipart($row->estado == 1 ? 'dispositivo/deshabilitarbd' : 'dispositivo/habilitarbd');
+                                          ?>
+                                          <input type="hidden" name="idDispositivo" value="<?php echo $row->id; ?>">
+                                          <button type="submit" class="btn btn-warning">
+                                             <?php echo $row->estado == 1 ? 'Deshabilitar' : 'Habilitar'; ?>
+                                          </button>
+                                          <?php
+                                             echo form_close();
                                           ?>
                                        </td>
 
@@ -758,9 +779,9 @@
 
                                        <td>
                                           <?php
-                                             echo form_open_multipart('monitoreo/eliminarbd');
+                                             echo form_open_multipart('dispositivo/eliminarbd');
                                           ?>
-                                          <input type="hidden" name="idSensordht11" value="<?php echo $row->id; ?>">
+                                          <input type="hidden" name="idDispositivo" value="<?php echo $row->id; ?>">
                                           <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
                                           <?php
                                              echo form_close();

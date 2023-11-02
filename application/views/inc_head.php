@@ -45,10 +45,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       
       <!-- RTL Css -->
       <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/rtl.min.css">
-      
+   <!--   
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
-<!--
+
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
       <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

@@ -112,14 +112,14 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="header-title">
-                                <h4 class="card-title">Registro de Dispositivo</h4>
+                                <h4 class="card-title">Registrar de Dispositivo</h4>
                             </div>
                         </div>
                         <div class="card-body">
                                 <div class="row">
                                     <!-- Columna izquierda para el formulario -->
                                     <div class="col-lg-4">
-                                        <form method="POST" action="<?php echo site_url('monitoreo/registrardispositivo'); ?>">
+                                        <form method="POST" action="<?php echo site_url('dispositivo/registrardispositivo'); ?>">
                                             <div class="form-group">
                                                 <label class="form-label">Código</label>
                                                 <input type="text" class="form-control" id="codigo" name="codigo" placeholder="">

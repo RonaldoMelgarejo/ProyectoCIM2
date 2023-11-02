@@ -52,5 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['monitoreo'] = 'monitoreo/chart';
+$route['monitoreo/grafica'] = 'monitoreo/grafica';
+
+//$route['monitoreo'] = 'monitoreo/chart';
+
 
