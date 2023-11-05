@@ -134,7 +134,33 @@ class Usuario extends CI_Controller {
 			// Éxito en la inserción, redirige a una página de éxito o muestra un mensaje
 			//echo 'Registro exitoso.';
 			//redirect('usuario/registro');
-			$this->session->set_flashdata('mensaje_exito', 'Registro exitoso.');
+			//$this->session->set_flashdata('mensaje_exito', 'Registro exitoso.');
+
+			// Envía un correo de bienvenida al usuario
+			$asunto = "Bienvenido a Hope UI";
+			$mensaje = "Hola " . $nombre . ",\n\n";
+			$mensaje .= "¡Gracias por registrarte en Hope UI! Tu cuenta ha sido creada con éxito.\n";
+			$mensaje .= "Tu nombre de usuario es: " . $nombreusuario . "\n";
+			$mensaje .= "Guarda esta información de forma segura.\n";
+			$mensaje .= "¡Esperamos que disfrutes de nuestra plataforma!\n";
+	
+			// Carga la biblioteca de correo de CodeIgniter
+			$this->load->library('email');
+
+			// Configura el correo utilizando la configuración definida en email.php
+			$this->email->from('pablo_ronaldo_mel@hotmail.com', 'Prueba Envio');
+			$this->email->to($email); // Usar la dirección de correo del usuario
+			$this->email->subject($asunto);
+			$this->email->message($mensaje);
+	
+			// Envia el correo
+			if ($this->email->send()) {
+				// Correo enviado con éxito
+				$this->session->set_flashdata('mensaje_exito', 'Registro exitoso. Se ha enviado un correo de bienvenida.');
+			} else {
+				// Error al enviar el correo
+				$this->session->set_flashdata('mensaje_error', 'Error al enviar el correo de bienvenida.');
+			}
 		} else {
 			// Error en la inserción, muestra un mensaje de error
 			//echo 'Email existente.';

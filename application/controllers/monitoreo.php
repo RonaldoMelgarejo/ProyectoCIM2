@@ -77,6 +77,45 @@ class Monitoreo extends CI_Controller {
 	}
 	//------------------------------
 
+	//--------- Intento Tabla AJAX --------
+	public function tableAjax(){
+		//$lista=$this->monitoreo_model->lista();   //almacena en una variable $lista el metodo lista() que esta en estudiante_model
+		//$data['medicion']=$lista;		//$data es un array asociativo que puede almacenar muchos datos de muchas consultas como docente_model->lista2
+		
+		$this->load->view('inc_head');
+		$this->load->view('inc_sidebar');
+		$this->load->view('inc_navbar');
+		$this->load->view('tableajax');
+		$this->load->view('inc_footer');
+	}
+
+	public function obtenerDatosTabla2() {
+		$this->load->model('monitoreo_model');
+		$data = $this->monitoreo_model->obtenerDatos();
+		
+		header('Content-Type: application/json'); // Establece el encabezado JSON
+		echo json_encode($data);
+	}
+	
+
+	public function obtenerDatosTabla() {
+		$this->load->model('monitoreo_model');
+		$data = $this->monitoreo_model->obtenerDatos();
+	
+		$formattedData = array();
+		foreach ($data as $row) {
+			$formattedData[] = array(
+				"nro" => $row->id,
+				"voltaje" => $row->voltaje,
+				"corriente" => $row->corriente,
+				"potencia" => $row->potencia,
+				"fecha_hora" => $row->fechaHoraMedicion
+			);
+		}
+		echo json_encode($formattedData);
+	}	
+	//------------------------------
+
 	//--------- Funciona de graficar AJAX ------
 	public function graficaAjax(){
 		$this->load->view('inc_head');
@@ -86,6 +125,8 @@ class Monitoreo extends CI_Controller {
 		$this->load->view('inc_footer');
 	}
 
+	//funciona pero para voltaje y corriente individual 
+	/*
 	public function grafica() {
         $this->load->model('Monitoreo_model');
 
@@ -95,6 +136,30 @@ class Monitoreo extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($data);
     }
+	*/
+	//
+
+	//Intento para dos graficas de voltaje Corriente y Potencia
+	public function grafica($tipoGrafica) {
+		$this->load->model('Monitoreo_model');
+        if ($tipoGrafica === 'voltajeCorriente') {
+            $data = array(
+                'voltaje' => $this->Monitoreo_model->getVoltajeData(),
+                'corriente' => $this->Monitoreo_model->getCorrienteData()
+            );
+        } elseif ($tipoGrafica === 'potencia') {
+            $data = array(
+                'potencia' => $this->Monitoreo_model->getPotenciaData()
+            );
+        } else {
+            show_404(); // Página no encontrada si el tipo de gráfica no es válido
+            return;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
 	//------------------------------------------
 
 	//--------- Vista de registrar y lista de Dispositivo -----

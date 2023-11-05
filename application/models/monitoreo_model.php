@@ -15,6 +15,13 @@ class Monitoreo_model extends CI_Model {
 	}
     //--------------------------------
 
+    //------ Intento datatable AJAX ---
+    public function obtenerDatos() {
+        $query = $this->db->get('energiagenerada');
+        return $query->result();
+    }
+    //---------------------------------
+
     //----- Nuevo Chart Funcional---
     public function getVoltajeData() {
         $this->db->select('fechaHoraMedicion, voltaje');
@@ -25,6 +32,13 @@ class Monitoreo_model extends CI_Model {
 
     public function getCorrienteData() {
         $this->db->select('fechaHoraMedicion, corriente');
+        $this->db->from('energiagenerada');
+        $this->db->order_by('fechaHoraMedicion', 'ASC');
+        return $this->db->get()->result_array();
+    }
+
+    public function getPotenciaData() {
+        $this->db->select('fechaHoraMedicion, potencia');
         $this->db->from('energiagenerada');
         $this->db->order_by('fechaHoraMedicion', 'ASC');
         return $this->db->get()->result_array();
