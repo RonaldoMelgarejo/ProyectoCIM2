@@ -1,5 +1,8 @@
+   
 <div class="conatiner-fluid content-inner mt-n5 py-0">
+     
    <div class="row">
+      <!--
       <div class="col-md-12 col-lg-12">
          <div class="row row-cols-1">
             <div class="overflow-hidden d-slider1 ">
@@ -115,9 +118,75 @@
                <div class="swiper-button swiper-button-prev"></div>
             </div>
          </div>
+      </div> -->
+
+      <div class="col-md-12 col-lg-12">
+         <div class="row">
+            <div class="col-lg-3 col-md-6">
+               <div class="card" data-aos="fade-up" data-aos-delay="800">
+                  <div class="card-body">
+                     <div class="d-flex justify-content-between align-items-center">
+                           <div class="bg-success text-white rounded p-3">
+                              <svg class="icon-32" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                 <path fill="white" d="M360-360H236q-24 0-35.5-21.5T203-423l299-430q10-14 26-19.5t33 .5q17 6 25 21t6 32l-32 259h155q26 0 36.5 23t-6.5 43L416-100q-11 13-27 17t-31-3q-15-7-23.5-21.5T328-139l32-221Z"/>
+                              </svg>
+                           </div>
+
+                           <div class="text-end">
+                              Potencia -en Vivo-
+                                 <h2 class="counter" style="visibility: visible;">80</h2>
+                           </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+               <div class="card" data-aos="fade-up" data-aos-delay="800">
+                  <div class="card-body">
+                     <div class="d-flex justify-content-between align-items-center">
+                           <div class="bg-success text-white rounded p-3">
+                              <svg class="icon-32" xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
+                                 <path fill="currentColor" d="M42-160v-72q0-33 17-62t47-44q51-26 115-44t141-18q77 0 141 18t115 44q30 15 47 44t17 62v72q0 17-11.5 28.5T642-120H82q-17 0-28.5-11.5T42-160Zm320-280q-66 0-113-47t-47-113h-10q-9 0-14.5-5.5T172-620q0-9 5.5-14.5T192-640h10q0-45 22-81t58-57v38q0 9 5.5 14.5T302-720q9 0 14.5-5.5T322-740v-54q9-3 19-4.5t21-1.5q11 0 21 1.5t19 4.5v54q0 9 5.5 14.5T422-720q9 0 14.5-5.5T442-740v-38q36 21 58 57t22 81h10q9 0 14.5 5.5T552-620q0 9-5.5 14.5T532-600h-10q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T442-600H282q0 33 23.5 56.5T362-520Zm297 144-3-14q-6-2-11.5-4.5T634-402l-12 4q-7 2-13.5 0t-10.5-9l-4-7q-4-6-2.5-13t6.5-12l10-9v-24l-10-9q-5-5-6.5-12t2.5-13l4-7q4-7 10.5-9t13.5 0l12 4q4-4 10-7t12-5l3-14q2-7 7-11.5t12-4.5h8q7 0 12 4.5t7 11.5l3 14q6 2 12 5t10 7l12-4q7-2 13.5 0t10.5 9l4 7q4 6 2.5 13t-6.5 12l-10 9v24l10 9q5 5 6.5 12t-2.5 13l-4 7q-4 7-10.5 9t-13.5 0l-12-4q-5 5-10.5 7.5T708-390l-3 14q-2 7-7 11.5t-12 4.5h-8q-7 0-12-4.5t-7-11.5Zm23-54q12 0 21-9t9-21q0-12-9-21t-21-9q-12 0-21 9t-9 21q0 12 9 21t21 9Zm68-152-4-20q-9-3-16.5-7.5T716-620l-21 7q-9 3-18-.5T663-625l-6-10q-5-8-3.5-17.5T663-669l17-15q-2-5-2-8v-16q0-3 2-8l-17-15q-8-7-9.5-16.5T657-765l6-10q5-8 14-11.5t18-.5l21 7q6-6 13.5-10.5T746-798l4-20q2-10 9.5-16t17.5-6h10q10 0 17.5 6t9.5 16l4 20q9 3 16.5 7.5T848-780l21-7q9-3 18 .5t14 11.5l6 10q5 8 3.5 17.5T901-731l-17 15q2 5 2 8v16q0 3-2 8l17 15q8 7 9.5 16.5T907-635l-6 10q-5 8-14 11.5t-18 .5l-21-7q-6 6-13.5 10.5T818-602l-4 20q-2 10-9.5 16t-17.5 6h-10q-10 0-17.5-6t-9.5-16Zm32-68q21 0 35.5-14.5T832-700q0-21-14.5-35.5T782-750q-21 0-35.5 14.5T732-700q0 21 14.5 35.5T782-650Z"/>
+                              </svg>
+                           </div>
+
+                           <div class="text-end">
+                              Potencia -en Vivo-
+                                 <h2 class="counter" style="visibility: visible;">80</h2>
+                           </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
+
+      <div class="form-group">
+         <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
+            <select name="chipID" class="form-control">
+               <option value="">Seleccionar ChipID</option>
+               <?php foreach ($chipIDs as $chipID): ?>
+                  <option value="<?php echo $chipID['codigo']; ?>"><?php echo $chipID['codigo']; ?></option>
+               <?php endforeach;?>
+            </select>
+         </li>
+      </div> 
+      <!--
       <div class="col-md-12 col-lg-8">
          <div class="row">
+            <div class="col-md-12">
+               <div class="card" data-aos="fade-up" data-aos-delay="800">
+                  <div class="flex-wrap card-header d-flex justify-content-between align-items-center">
+                        <div class="header-title">
+                           <h4 class="card-title">Potencia</h4>
+                        </div>
+                  </div>
+                  <div class="card-body">
+                        <canvas id="potenciaChart" width="400" height="200"></canvas>
+                  </div>
+               </div>
+            </div>
             <div class="col-md-12">
                <div class="card" data-aos="fade-up" data-aos-delay="800">
                   <div class="flex-wrap card-header d-flex justify-content-between align-items-center">
@@ -410,6 +479,20 @@
       <div class="col-md-12 col-lg-4">
          <div class="row">
             <div class="col-md-12 col-lg-12">
+                  <div class="card" data-aos="fade-up" data-aos-delay="900">
+                     <div class="flex-wrap card-header d-flex justify-content-between">
+                        <div class="header-title">
+                              <h4 class="mb-2 card-title">Sistema Fotovoltaico</h4>
+                        </div>
+                     </div>
+                     <div class="card-body" style="padding: 0;">
+                        <div style="margin: 0; overflow: hidden; border-radius: 10px;">
+                              <img src="<?php echo base_url(); ?>/assets/images/referencia.jpg" style="width: 100%; height: 100%; margin: 0; border-radius: 10px;">
+                        </div>                    
+                     </div>
+                  </div>
+            </div>
+            <div class="col-md-12 col-lg-12">
                <div class="card credit-card-widget" data-aos="fade-up" data-aos-delay="900">
                   <div class="pb-4 border-0 card-header">
                      <div class="p-4 border border-white rounded primary-gradient-card">
@@ -557,5 +640,124 @@
             </div>
          </div>
       </div> 
+               -->
    </div>
 </div>
+
+<!--
+<script>
+$(document).ready(function () {
+    var ctxPotencia = document.getElementById('potenciaChart').getContext('2d');
+    var potenciaChart;
+    var maxDataPoints = 20;
+
+    function updatePotenciaChart() {
+        $.get('<?= base_url('index.php/monitoreo/grafica/potencia'); ?>', function (data) {
+            if (data && data.potencia) {
+                var potenciaData = data.potencia;
+
+                // Procesa los datos
+                // ...
+
+                // Ejemplo de cómo procesar los datos
+                var labels = potenciaData.map(item => item.fechaHoraMedicion);
+                var potenciaValues = potenciaData.map(item => item.potencia);
+
+                // Asegurarse de que no haya más puntos de datos que el límite
+                if (labels.length > maxDataPoints) {
+                    labels = labels.slice(-maxDataPoints);
+                    potenciaValues = potenciaValues.slice(-maxDataPoints);
+                }
+
+                // Actualiza la gráfica de potencia
+                if (potenciaChart) {
+                    potenciaChart.data.labels = labels;
+                    potenciaChart.data.datasets[0].data = potenciaValues;
+                    potenciaChart.update();
+                } else {
+                    potenciaChart = new Chart(ctxPotencia, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Potencia',
+                                    data: potenciaValues,
+                                    borderColor: 'green',
+                                },
+                            ],
+                        },
+                    });
+                }
+            } else {
+                console.error('Datos inválidos en la respuesta AJAX');
+            }
+        }).fail(function () {
+            console.error('Error en la solicitud AJAX');
+        });
+    }
+
+    // Actualiza la gráfica de potencia cada X segundos (ajusta el intervalo según tus necesidades)
+    setInterval(updatePotenciaChart, 5000);
+    updatePotenciaChart();
+});
+</script>
+-->
+
+
+<script>
+$(document).ready(function () {
+    var ctxPotencia = document.getElementById('potenciaChart').getContext('2d');
+    var potenciaChart;
+    var maxDataPoints = 20;
+
+    function updatePotenciaChart() {
+        var chipID = $('select[name="chipID"]').val();
+        $.get('<?= base_url('index.php/monitoreo/obtenerPotenciaPorChipID'); ?>', {chipID: chipID}, function (data) {
+            console.log('Respuesta AJAX:', data);
+            if (data && data.potencia) {
+                var potenciaData = data.potencia;
+
+                // Ejemplo de cómo procesar los datos
+                var labels = potenciaData.map(item => item.fechaHoraMedicion);
+                var potenciaValues = potenciaData.map(item => item.potencia);
+
+                // Asegurarse de que no haya más puntos de datos que el límite
+                if (labels.length > maxDataPoints) {
+                    labels = labels.slice(-maxDataPoints);
+                    potenciaValues = potenciaValues.slice(-maxDataPoints);
+                }
+
+                // Actualiza la gráfica de potencia
+                if (potenciaChart) {
+                    potenciaChart.data.labels = labels;
+                    potenciaChart.data.datasets[0].data = potenciaValues;
+                    potenciaChart.update();
+                } else {
+                    potenciaChart = new Chart(ctxPotencia, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Potencia',
+                                    data: potenciaValues,
+                                    borderColor: 'green',
+                                },
+                            ],
+                        },
+                    });
+                }
+            } else {
+                console.error('Datos inválidos en la respuesta AJAX');
+            }
+        }).fail(function () {
+            console.error('Error en la solicitud AJAX');
+        });
+    }
+
+    // Actualiza la gráfica de potencia cada X segundos (ajusta el intervalo según tus necesidades)
+    setInterval(updatePotenciaChart, 5000);
+    updatePotenciaChart();
+});
+</script>

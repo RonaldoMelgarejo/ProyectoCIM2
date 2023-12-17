@@ -29,8 +29,9 @@
    </div>
 </div>
 
-    <!-- Añade el código JavaScript para DataTable y AJAX 
-    <script type="text/javascript">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Añade el código JavaScript para DataTable y AJAX -->
+    <script>
         $(document).ready(function () {
          var table = $('#tablaEnergia').DataTable();
             if ($.fn.DataTable.isDataTable('#tablaEnergia')) {
@@ -51,9 +52,15 @@
                   { "data": "fecha_hora" }
                ]
             });
+
+            //configura un intervalo para recargar la tabla
+            setInterval(function(){
+               table.ajax.reload(null, false);
+            }, 5000);
         });
     </script>
-    -->
+    
+    <!--
     <script>
     // Función para cargar los datos de la tabla
     function cargarDatosTabla() {
@@ -90,3 +97,4 @@
     // Actualizar la tabla cada 5 segundos (puedes ajustar el tiempo según tus necesidades)
     setInterval(cargarDatosTabla, 5000);
 </script>
+   -->

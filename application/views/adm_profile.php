@@ -53,7 +53,7 @@
                               <p class="d-inline-block pl-3"> - Web developer</p>
                               <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                               -->
-                              <form method="post" id="editarUsuario" action="<?php echo site_url('usuario/modificarusuariocliente'); ?>">
+                              <form method="post" id="editarUsuario" action="<?php echo site_url('usuario/modificarusuario'); ?>">
                                  <div class="row">
                                     <input type="hidden" id="idUsuario" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                                     <!-- <?php echo 'Valor de idUsuario: ' . $this->session->userdata('idusuario'); ?> -->
@@ -123,7 +123,7 @@
                            
                            <div class="mt-3">
                               
-                              <form method="post" id="" action="<?php echo site_url('usuario/cambiarContrasenia'); ?>">
+                              <form method="post" id="" action="<?php echo site_url('usuario/modificarcontrasenia'); ?>">
                                  <div class="row">
                                     <input type="hidden" id="idUsuario" name="idUsuario" value="<?php echo $this->session->userdata('idUsuario'); ?>">
                                     <!-- <?php echo 'Valor de idUsuario: ' . $this->session->userdata('idUsuario'); ?> -->

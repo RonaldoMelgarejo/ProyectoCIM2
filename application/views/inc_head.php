@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <head>
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
+      <title>SolarEnergy</title>
       
       <!-- Favicon -->
       <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/images/favicon.ico">
@@ -46,13 +46,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- RTL Css -->
       <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/rtl.min.css">
 
-      <!-- datatable -->
+      <!-- Flatpickr -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/l10n/es.js"></script>
+
+      <!-- DataTables -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-
-      <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css"> -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <!-- <script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script> -->
+      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
+      <!-- Leaflet Map -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
       <style>
           /* Estilo para el mapa, ajusta el tamaño según tus necesidades */
@@ -62,12 +66,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           }
       </style>
       
+      <!-- Toastr -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+      
+      <!-- Estilo tabla -->
+      <style>
+        /* Estilos generales para th y td */
+        .tabla-filtrar th, .tabla-filtrar td {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 8px;
+        }
+      </style>
+
   </head>
   <body class=" ">
     <!-- loader Start -->
     <div id="loading">
       <div class="loader simple-loader">
           <div class="loader-body">
+            
           </div>
-      </div>    </div>
+      </div>    
+    </div>
     <!-- loader END -->

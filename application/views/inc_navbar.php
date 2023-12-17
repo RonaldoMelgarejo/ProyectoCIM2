@@ -29,7 +29,7 @@
                 
                 
                 
-                <h4 class="logo-title">Hope UI</h4>
+                <h4 class="logo-title">SolEnergy</h4>
             </a>
             <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
                 <i class="icon">
@@ -37,7 +37,7 @@
                     <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
                 </svg>
                 </i>
-            </div>
+            </div> <!--
             <div class="input-group search-input">
               <span class="input-group-text" id="search-input">
                 <svg class="icon-18" width="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +46,7 @@
                 </svg>
               </span>
               <input type="search" class="form-control" placeholder="Search...">
-            </div>
+            </div> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon">
                   <span class="mt-2 navbar-toggler-bar bar1"></span>
@@ -65,7 +65,7 @@
                     </svg>
                     Go Pro
                   </a>
-                </li> -->
+                </li> 
                 <li class="nav-item dropdown">
                     <a href="#" class="search-toggle nav-link" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="<?php echo base_url(); ?>/assets/images/Flag/flag001.png" class="img-fluid rounded-circle" alt="user" style="height: 30px; min-width: 30px; width: 30px;">
@@ -84,7 +84,8 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> -->
+              <!--
                 <li class="nav-item dropdown">
                   <a href="#"  class="nav-link" id="notification-drop" data-bs-toggle="dropdown" >
                       <svg class="icon-24" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,9 +98,9 @@
                       <div class="m-0 shadow-none card">
                         <div class="py-3 card-header d-flex justify-content-between bg-primary">
                             <div class="header-title">
-                              <h5 class="mb-0 text-white">All Notifications</h5>
+                              <h5 class="mb-0 text-white">Notificaciones</h5>
                             </div>
-                        </div>
+                        </div> <!--
                         <div class="p-0 card-body">
                             <a href="#" class="iq-sub-card">
                               <div class="d-flex align-items-center">
@@ -151,7 +152,7 @@
                                   </div>
                               </div>
                             </a>
-                        </div>
+                        </div> 
                       </div>
                   </div>
                 </li>
@@ -167,9 +168,9 @@
                       <div class="m-0 shadow-none card">
                         <div class="py-3 card-header d-flex justify-content-between bg-primary">
                             <div class="header-title">
-                              <h5 class="mb-0 text-white">All Message</h5>
+                              <h5 class="mb-0 text-white">Mensajes</h5>
                             </div>
-                        </div>
+                        </div> <!--
                         <div class="p-0 card-body ">
                             <a href="#" class="iq-sub-card">
                               <div class="d-flex align-items-center">
@@ -230,6 +231,7 @@
                       </div>
                   </div>
                 </li>
+              -->
                 <li class="nav-item dropdown">
                   <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="<?php echo base_url(); ?>/assets/images/avatars/01.png" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded">
@@ -246,7 +248,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="<?php echo base_url(); ?>index.php/monitoreo/perfil">Perfil</a></li>
-                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>/dashboard/app/user-privacy-setting.html">Privacy Setting</a></li>
+                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>/dashboard/app/user-privacy-setting.html">Contraseña</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <!-- <li><a class="dropdown-item" href="<?php echo base_url(); ?>/dashboard/auth/sign-in.html">Logout</a></li> -->
                     <li><a class="dropdown-item" href="<?php echo base_url(); ?>index.php/usuario/logout">Cerrar Sesión</a></li>
@@ -262,9 +264,9 @@
                       <div class="col-md-12">
                           <div class="flex-wrap d-flex justify-content-between align-items-center">
                               <div>
-                                  <h1>Iluminando tu mundo, gestionando tu energía.</h1>
-                                  <!-- <p>We are on a mission to help developers like you build successful projects for FREE.</p> -->
-                              </div><!--
+                                  <h1>SolEnergy</h1>
+                                  <p>Iluminando tu mundo, gestionando tu energía.</p>
+                              </div> <!--
                               <div>
                                   <a href="" class="btn btn-link btn-soft-light">
                                       <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -274,6 +276,7 @@
                                       Announcements
                                   </a>
                               </div> -->
+                             
                           </div>
                       </div>
                   </div>

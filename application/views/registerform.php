@@ -146,28 +146,17 @@
                               </div>
                               <?php endif; ?>
 
-                              <!--
-                              <p class="text-center my-3">¿O iniciar sesión con otras cuentas?</p>
-                              <div class="d-flex justify-content-center">
-                                 <ul class="list-group list-group-horizontal list-group-flush">
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="<?php echo base_url(); ?>/assets/images/brands/fb.svg" alt="fb"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="<?php echo base_url(); ?>/assets/images/brands/gm.svg" alt="gm"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="<?php echo base_url(); ?>/assets/images/brands/im.svg" alt="im"></a>
-                                    </li>
-                                    <li class="list-group-item border-0 pb-0">
-                                       <a href="#"><img src="<?php echo base_url(); ?>/assets/images/brands/li.svg" alt="li"></a>
-                                    </li>
-                                 </ul>
-                              </div> -->
                               <p class="mt-3 text-center">
                                 Ya tienes una cuenta <a href="<?php echo base_url('index.php/usuario/index'); ?>" class="text-underline">Iniciar sesión</a>
                               </p>
                            </form>
+                           <!-- Funciona envio de correos
+                           <form method="post" action="<?php echo site_url('usuario/enviar_correo'); ?>">
+                              <input type="email" name="destinatario" placeholder="Dirección de correo">
+                              <textarea name="mensaje" placeholder="Mensaje"></textarea>
+                              <input type="submit" value="Enviar Correo">
+                           </form>
+                           -->
                         </div>
                      </div>    
                   </div>
